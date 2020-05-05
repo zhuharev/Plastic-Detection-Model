@@ -8,6 +8,7 @@ import gc
 import json
 import firebase
 import env
+from classify import init
 
 # Instantiate Flask
 app = Flask(__name__)
@@ -42,4 +43,11 @@ def detect():
     
     return response_data
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=os.environ['PORT'], debug=False)
+    init()
+    try:
+        port = os.environ['PORT']
+    except:
+        port = "8080"
+
+    app.run(host='0.0.0.0', port=port, debug=True)
+
