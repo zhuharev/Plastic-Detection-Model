@@ -27,13 +27,13 @@ def detect():
     imgBytes = request.data
 
     imgdata = base64.b64decode(imgBytes)
-    with open("temp.png", 'wb') as f:
-        f.write(imgdata)
-    f.close()
-    print("successfully receieved image")
+    # with open("temp.png", 'wb') as f:
+    #     f.write(imgdata)
+    # f.close()
+    # print("successfully receieved image")
     
     # Pass image bytes to classifier
-    result = classify.analyse("temp.png")
+    result = classify.analyse(imgdata)
 	
     # Return results as neat JSON object, using 
     result = jsonify(result)
